@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <ItemListContainer greetings="Mensaje de bienvenida"/>
+      <ItemListContainer greetings="Futuros productos"/>
     </>
   )
 }
