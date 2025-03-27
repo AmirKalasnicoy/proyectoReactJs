@@ -1,3 +1,87 @@
-h2{
+.item-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .category-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 15px;
+  }
+  
+  .category-header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .category-header p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para estados vacíos y de error */
+  .empty-results,
+  .error-container {
     text-align: center;
-}
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin: 30px auto;
+    max-width: 600px;
+  }
+  
+  .empty-results h2,
+  .error-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .empty-results p,
+  .error-container p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .retry-button {
+    background-color: #131244;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .retry-button:hover {
+    background-color: #1d1b5e;
+  }
+  /* Responsive */
+@media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+    }
+    
+    .category-header h1 {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    
+    .item-list-container {
+      padding: 15px 10px;
+    }}
