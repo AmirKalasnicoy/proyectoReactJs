@@ -65,6 +65,18 @@ function ItemDetail() {
             </div>
         );
     }
+    //Manejo de errores 
+    if (error) {
+        return (
+            <div className="error-container">
+                <h3>Oops! Algo salió mal</h3>
+                <p>{error}</p>
+                <Link to="/">
+                    <button className="btn btn-primary">Volver al inicio</button>
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="item-detail-container">
