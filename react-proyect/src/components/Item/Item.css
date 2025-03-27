@@ -17,7 +17,7 @@
 .imagen-container {
     width: 100%;
     height: 0;
-    padding-bottom: 66.67%; /* Aspect ratio 3:2 */
+    padding-bottom: 66.67%; 
     position: relative;
     background-color: #f8f9fa;
     overflow: hidden;
@@ -29,8 +29,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Muestra la imagen completa */
-    padding: 15px; /* Espacio para que la imagen no toque los bordes */
+    object-fit: contain; 
+    padding: 15px; 
 }
 
 .producto-titulo {
