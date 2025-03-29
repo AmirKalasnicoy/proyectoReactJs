@@ -20,7 +20,7 @@ function Item({ producto }) {
         <div className={`producto-card ${esProductoVertical ? 'producto-vertical' : ''}`}>
             <div className="imagen-container">
                 <img
-                    src={img || "https://via.placeholder.com/300"}
+                    src={img || "https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"}
                     alt={nombre}
                     className="producto-imagen"
                 />

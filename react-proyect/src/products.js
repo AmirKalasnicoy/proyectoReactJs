@@ -44,4 +44,13 @@ export const productos = [
         descripcion: "Es inalámbrico",
         img: "https://m.media-amazon.com/images/I/712sMCm+H7L._SL1500_.jpg",
     },
+    {
+        id: 6,
+        nombre:"Tablet",
+        precio: 60,
+        categoria:"computadora",
+        stock:5,
+        descripcion:"Viene con un lapiz tactil",
+        img:"",
+    }
 ];
