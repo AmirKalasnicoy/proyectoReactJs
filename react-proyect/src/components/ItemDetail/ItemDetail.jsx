@@ -86,7 +86,7 @@ function ItemDetail() {
                 <div className="product-detail-content">
                     <div className="product-image-container">
                         <img 
-                            src={producto.img || 'https://via.placeholder.com/400'} 
+                            src={producto.img || 'https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg'} 
                             alt={producto.nombre}
                             className="product-image" 
                         />
