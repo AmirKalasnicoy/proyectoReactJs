@@ -33,7 +33,7 @@ export const productos = [
         categoria: "celular",
         stock: 15,
         descripcion: "Funda solo apta para millonarios",
-        img: "https://th.bing.com/th/id/R.9113f6a1bc82620f3871c289bbe018b5?rik=VD8wgK7A24cJzg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ZuBRfrVPySs%2fUwdi4zBbT2I%2fAAAAAAAAA2s%2ffesQ07gMzcM%2fs1600%2ffantasma.jpg&ehk=hEqnYSySSe2ygB10A02QBvc0km21oM8agSuER5YjJbk%3d&risl=&pid=ImgRaw&r=0",
+        img: "https://b-fans.com.ar/wp-content/uploads/2022/05/IPH123DRIV1R_-1024x1024.jpg",
     },
     {
         id: 5,
