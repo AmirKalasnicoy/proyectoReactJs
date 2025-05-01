@@ -6,7 +6,6 @@ const AppContext= createContext();
 
 export const ContextProvider = (props)=>{
 
-    const numero=1;
     const [carrito,setCarrito]= useState([])
 
     function agregarAlCarrito(prod,cantidad) {
@@ -15,14 +14,14 @@ export const ContextProvider = (props)=>{
             cantidad: 1,
         };
         if(carrito.some(el=> el.id===prod.id)){
-            const newCarrito= carrito.map(el=>{
+            const newCarrito= carrito.map(element=>{
                 if(element.id===prod.id){
                     return{
-                        ...el,
-                        cantidad: el.cantidad+prod.cantidad
+                        ...element,
+                        cantidad: element.cantidad+prod.cantidad
                     }
                 }else{
-                    return el;
+                    return element;
                 }
             })
             setCarrito(newCarrito)
@@ -34,7 +33,7 @@ export const ContextProvider = (props)=>{
     };
 
     return(
-        <AppContext.Provider value={{numero,carrito,agregarAlCarrito}}>
+        <AppContext.Provider value={{carrito,agregarAlCarrito}}>
             {props.children}
         </AppContext.Provider>
     )
