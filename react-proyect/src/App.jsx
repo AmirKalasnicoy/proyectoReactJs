@@ -4,11 +4,12 @@ import ItemListContainer from "./components/itemListContainer/ItemListContainer"
 import ItemDetail from './components/ItemDetail/ItemDetail';
 import NotFound from "./components/NotFound/NotFound";
 import './App.css'
+import { ContextProvider } from "./context/context";
 function App() {
 
 
   return (
-    <>
+    <ContextProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -18,8 +19,7 @@ function App() {
           <Route path="*" element={<NotFound />} /> 
         </Routes>
       </BrowserRouter>
-
-    </>
+    </ContextProvider>
   )
 }
 
