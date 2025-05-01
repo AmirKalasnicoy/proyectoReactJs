@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import './Item.css';
+import { useAppContext } from '../../context/context';
 
 function Item({ producto }) {
     const { id, nombre, precio, stock, img } = producto;
@@ -7,13 +8,7 @@ function Item({ producto }) {
     const esProductoVertical = nombre.toLowerCase().includes('funda') ||
         nombre.toLowerCase().includes('celular');
         
-    function agregarAlCarrito(prod) {
-        const nuevoProducto = {
-            ...prod,
-            cantidad: 1,
-        };
-        console.log("Vas a agregar", nuevoProducto);
-    };
+    const {agregarAlCarrito}=useAppContext();
 
 
     return (
@@ -38,7 +33,7 @@ function Item({ producto }) {
             <div className="producto-footer">
                 <button 
                     className="btn-agregar" 
-                    onClick={() => agregarAlCarrito(producto)}
+                    onClick={() => agregarAlCarrito(producto,1)}
                 >
                     Agregar al carrito
                 </button>
