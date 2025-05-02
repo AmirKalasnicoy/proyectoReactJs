@@ -22,6 +22,7 @@ const crearOrden=()=>{
 
   useEffect(() => {
   setLoading(true);
+  console.log("Productos traídos de Firestore:", productos);
 
   getDocs(collection(db, "productos"))
     .then(snapshot => {
@@ -106,7 +107,6 @@ if (error) {
           <Item key={producto.id} producto={producto} />
         ))}
       </div>
-      <button onClick={() => crearOrden()} className="btn btn-primary">Cargar</button> 
     </div>
   );
 }

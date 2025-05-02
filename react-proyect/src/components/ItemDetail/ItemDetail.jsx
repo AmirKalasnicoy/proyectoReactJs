@@ -2,9 +2,10 @@ import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
-import { fetchData } from '../../fetchData';
 import Loader from '../Loader/Loader';
 import { useAppContext } from '../../context/context';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
 function ItemDetail() {
     const { id } = useParams();
@@ -17,29 +18,28 @@ function ItemDetail() {
 
 
     useEffect(() => {
-        // Resetear estados cuando cambia el ID
         setLoading(true);
         setError(null);
 
-        fetchData()
-            .then(response => {
-                const productoAMostrar = response.find(el => el.id === parseInt(id));
-                if (productoAMostrar) {
-                    setProducto(productoAMostrar);
+        const docRef = doc(db, "productos", id);
+
+        getDoc(docRef)
+            .then(docSnap => {
+                if (docSnap.exists()) {
+                    setProducto({ id: docSnap.id, ...docSnap.data() });
                 } else {
                     setError(`No se encontró ningún producto con ID: ${id}`);
                 }
             })
             .catch(err => {
                 console.error("Error al cargar el producto:", err);
-                setError("Ocurrió un error al cargar el producto. Por favor, intenta nuevamente.");
+                setError("Ocurrió un error al cargar el producto.");
             })
             .finally(() => {
-                setTimeout(() => {
-                    setLoading(false);
-                }, 300);
+                setTimeout(() => setLoading(false), 300);
             });
     }, [id]);
+
 
     if (loading) {
         return <Loader />;
@@ -113,7 +113,7 @@ function ItemDetail() {
 
                                 <button
                                     className="product-add-button"
-                                    onClick={() => agregarAlCarrito(producto,contador)}
+                                    onClick={() => agregarAlCarrito(producto, contador)}
                                     disabled={producto.stock === 0}
                                 >
                                     Agregar al carrito
