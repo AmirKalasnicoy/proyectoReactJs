@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import Item from '../Item/Item';
 import Loader from '../Loader/Loader';
-import { fetchData } from '../../fetchData';
 import { useParams } from 'react-router';
 import {db} from '../../firebaseConfig';
 import { collection,getDocs } from 'firebase/firestore';
@@ -18,34 +17,35 @@ function ItemListContainer() {
   const ordenesCollection=collection(db,"ordenes")
   
 const crearOrden=()=>{
-  
+
 }
 
   useEffect(() => {
+  setLoading(true);
 
-    getDocs(productosCollection).then(snapshot=>{
-        let arrayDeProductos = snapshot.docs.map(el=>el.data());
-        console.log(arrayDeProductos)
-        
+  getDocs(collection(db, "productos"))
+    .then(snapshot => {
+      const productosFirebase = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      const filtrados = categoria
+        ? productosFirebase.filter(prod => prod.categoria === categoria)
+        : productosFirebase;
+
+      setProductos(filtrados);
+      setError(null);
     })
-    .catch(err=>console.error(err));
+    .catch(err => {
+      console.error('Error cargando productos desde Firestore:', err);
+      setError('No pudimos cargar los productos. Por favor, intenta nuevamente.');
+    })
+    .finally(() => {
+      setTimeout(() => setLoading(false), 300);
+    });
+}, [categoria]);
 
-    // Reset loading state cuando cambia la categoría
-    setLoading(true);
-
-    fetchData()
-      .then(response => {
-        setProductos(response);
-        setError(null);
-      })
-      .catch(err => {
-        console.error('Error cargando productos:', err);
-        setError('No pudimos cargar los productos. Por favor, intenta nuevamente.');
-      })
-      .finally(() => {
-        setTimeout(() => setLoading(false), 300);
-      });
-  }, [categoria]);
 
   // Función para filtrar productos por categoria
   const getProductosFiltrados = () => {

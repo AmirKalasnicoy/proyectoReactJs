@@ -1,15 +1,14 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore"
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCz2ezLizKA2Lg17psE9xgWplC2Dw_0ylk",
-  authDomain: "react-proyect-entrega.firebaseapp.com",
-  projectId: "react-proyect-entrega",
-  storageBucket: "react-proyect-entrega.firebasestorage.app",
-  messagingSenderId: "982039497264",
-  appId: "1:982039497264:web:3e9e4f30d8402641263bf5"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db= getFirestore(app);
+export const db = getFirestore(app);
