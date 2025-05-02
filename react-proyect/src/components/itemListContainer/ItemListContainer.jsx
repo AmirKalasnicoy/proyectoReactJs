@@ -4,6 +4,8 @@ import Item from '../Item/Item';
 import Loader from '../Loader/Loader';
 import { fetchData } from '../../fetchData';
 import { useParams } from 'react-router';
+import {db} from '../../firebaseConfig';
+import { collection,getDocs } from 'firebase/firestore';
 
 function ItemListContainer() {
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,22 @@ function ItemListContainer() {
 
   const { categoria } = useParams();
 
+  const productosCollection=collection(db,"productos")
+  const ordenesCollection=collection(db,"ordenes")
+  
+const crearOrden=()=>{
+  
+}
+
   useEffect(() => {
+
+    getDocs(productosCollection).then(snapshot=>{
+        let arrayDeProductos = snapshot.docs.map(el=>el.data());
+        console.log(arrayDeProductos)
+        
+    })
+    .catch(err=>console.error(err));
+
     // Reset loading state cuando cambia la categoría
     setLoading(true);
 
@@ -89,6 +106,7 @@ if (error) {
           <Item key={producto.id} producto={producto} />
         ))}
       </div>
+      <button onClick={() => crearOrden()} className="btn btn-primary">Cargar</button> 
     </div>
   );
 }
