@@ -1,6 +1,6 @@
 import { useAppContext } from '../../context/context';
 import { Link } from 'react-router-dom';
-import './Cart.css'; // opcional, si vas a darle estilos
+import './Cart.css'; 
 
 function Cart() {
   const { carrito } = useAppContext();
