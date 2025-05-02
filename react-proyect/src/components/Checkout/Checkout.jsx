@@ -5,7 +5,7 @@ import { useAppContext } from "../../context/context";
 import { Link } from "react-router-dom";
 import './Checkout.css';
 function CheckoutForm() {
-  const { carrito } = useAppContext();
+  const { carrito,vaciarCarrito  } = useAppContext();
 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -26,6 +26,7 @@ function CheckoutForm() {
     try {
       const docRef = await addDoc(collection(db, "ordenes"), orden);
       setOrderId(docRef.id);
+      vaciarCarrito();
     } catch (error) {
       console.error("Error al guardar la orden:", error);
     }

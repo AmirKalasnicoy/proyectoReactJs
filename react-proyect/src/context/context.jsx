@@ -32,10 +32,14 @@ export const ContextProvider = (props)=>{
       
         console.log("Agregado al carrito:", nuevoProducto);
       }
+
+      function vaciarCarrito() {
+        setCarrito([]);
+      }
       
 
     return(
-        <AppContext.Provider value={{carrito,agregarAlCarrito}}>
+        <AppContext.Provider value={{carrito,agregarAlCarrito,vaciarCarrito }}>
             {props.children}
         </AppContext.Provider>
     )
