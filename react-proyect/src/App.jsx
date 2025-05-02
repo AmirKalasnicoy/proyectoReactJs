@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemListContainer from "./components/itemListContainer/ItemListContainer";
 import ItemDetail from './components/ItemDetail/ItemDetail';
 import NotFound from "./components/NotFound/NotFound";
-import './App.css'
+import './App.css';
 import { ContextProvider } from "./context/context";
 function App() {
 

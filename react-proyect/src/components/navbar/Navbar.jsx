@@ -1,7 +1,7 @@
-import './Navbar.css';
-import { Link } from 'react-router';
-import CartWidget from '../CartWidget/CartWidget';
-import logo from '../../assets/logo.jpg';
+import './Navbar.css'
+import { Link } from 'react-router'
+import CartWidget from '../CartWidget/CartWidget'
+import logo from '../../assets/logo.jpg'
 
 function Navbar() {
   return (
