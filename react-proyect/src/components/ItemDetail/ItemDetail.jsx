@@ -1,10 +1,10 @@
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { useAppContext } from '../../context/context';
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
 function ItemDetail() {
@@ -16,29 +16,32 @@ function ItemDetail() {
     const [error, setError] = useState(null);
     const { agregarAlCarrito } = useAppContext();
 
-
     useEffect(() => {
-        setLoading(true);
-        setError(null);
-
-        const docRef = doc(db, "productos", id);
-
-        getDoc(docRef)
-            .then(docSnap => {
-                if (docSnap.exists()) {
-                    setProducto({ id: docSnap.id, ...docSnap.data() });
-                } else {
-                    setError(`No se encontró ningún producto con ID: ${id}`);
-                }
-            })
-            .catch(err => {
-                console.error("Error al cargar el producto:", err);
-                setError("Ocurrió un error al cargar el producto.");
-            })
-            .finally(() => {
-                setTimeout(() => setLoading(false), 300);
-            });
-    }, [id]);
+        const fetchData = async () => {
+          setLoading(true);
+          setError(null);
+      
+          try {
+            const q = query(collection(db, 'productos'), where('id', '==', parseInt(id)));
+            const querySnapshot = await getDocs(q);
+      
+            if (querySnapshot.empty) {
+              setError(`No se encontró ningún producto con ID: ${id}`);
+            } else {
+              const doc = querySnapshot.docs[0];
+              setProducto({ id: doc.id, ...doc.data() });
+            }
+          } catch (err) {
+            console.error("Error al cargar el producto:", err);
+            setError("Ocurrió un error al cargar el producto.");
+          } finally {
+            setTimeout(() => setLoading(false), 300);
+          }
+        };
+      
+        fetchData();
+      }, [id]);
+      
 
 
     if (loading) {

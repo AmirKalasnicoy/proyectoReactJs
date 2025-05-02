@@ -1,12 +1,42 @@
-# React + Vite
+# 🛒 GamerCorp - E-commerce SPA en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto final para el curso de React JS de Coderhouse. Se trata de una tienda online ficticia de productos gamer, desarrollada como **Single Page Application** utilizando **React**, **Firebase**, **React Router DOM** y **Context API**.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías y herramientas utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ React 19
+- 🔥 Firebase (Firestore como base de datos)
+- 🌐 React Router DOM para navegación
+- 🎯 Context API para manejo global del carrito
+- 💅 Bootstrap 5.3 para estilos y diseño responsive
+- ☁️ Netlify para deploy
 
-## Expanding the ESLint configuration
+## 🧩 Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ Catálogo dinámico de productos desde Firebase
+- ✅ Vista por categorías
+- ✅ Detalle de producto con selector de cantidad
+- ✅ Carrito de compras con resumen y total
+- ✅ Checkout con formulario para finalizar la compra
+- ✅ Persistencia en Firebase (orden guardada)
+- ✅ Deploy funcional en Netlify
+
+## 📸 Capturas
+![Carrito](./src/assets/carrito-img.png)
+![Carrito](./src/assets/home.png)
+## 🔧 Estructura del proyecto
+
+```bash
+├── src/
+│   ├── components/
+│   │   ├── Item, ItemDetail, Cart, Checkout, Navbar...
+│   ├── context/
+│   │   └── context.jsx (manejo del carrito)
+│   ├── firebaseConfig.js
+│   ├── App.jsx / main.jsx
+│
+├── public/
+│   ├── _redirects (soporte para rutas en Netlify)
+│   └── index.html
+├── .env (variables para Firebase - no está en Git)
+├── netlify.toml (configuración para despliegue)
